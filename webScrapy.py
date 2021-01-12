@@ -3,7 +3,7 @@ from PIL import Image
 from io import BytesIO
 import requests
 import os
-from pymongo import MongoClient
+#from pymongo import MongoClient
 
 def DoSearch():
     search = input("Please enter term you wanna search:")
@@ -21,7 +21,7 @@ def DoSearch():
 
     #print(links)
 
-    for item in links :
+    for item in results :
         try:
             item_name = item.find("div",{"class" : "subtitle-16 post-card__title"}).text
             item_price= item.find("div",{"class" : "body-12 post-card__description"}).text
@@ -34,11 +34,11 @@ def DoSearch():
        # print(item)
             print(item_name)
             print(item_price)
-            client = MongoClient()
-            db = client.amin
-            itm = db.items
+            #client = MongoClient()
+            #db = client.amin
+            #itm = db.items
 
-            itm.insert({"Search_Name":search,"Item_name" : item_name,"Item_Price" :item_price,"Image_Title": title,"Folder_path":"./"+dir_name})
+            #itm.insert({"Search_Name":search,"Item_name" : item_name,"Item_Price" :item_price,"Image_Title": title,"Folder_path":"./"+dir_name})
         except:
              print("An exception occurred")
 
